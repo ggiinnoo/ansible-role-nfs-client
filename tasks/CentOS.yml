@@ -1,0 +1,25 @@
+---
+
+- name: Install needed NFS utils
+  yum:
+    name: "{{ nfsCentOS }}"
+    state: installed
+
+- name: Make sure target folder exists
+  file:
+    name: "{{ item.path }}"
+    state: directory
+  with_items:
+   - "{{ nfsShares }}"
+  when:
+    - item.path is defined
+
+- name: Configure NFS mounts
+  mount:
+    src: "{{ item.server }}:{{ item.name }}"
+    path: "{{ item.path }}"
+    state: "{{ item.state | default('mounted') }}"
+    opts: "vers={{ item.version | default(nfsVersion) }},{{ item.opts | default(nfsOpts) }}"
+    fstype: nfs
+  with_items:
+   - "{{ nfsShares }}"

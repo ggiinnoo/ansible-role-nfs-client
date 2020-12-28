@@ -1,0 +1,10 @@
+---
+
+nfsShares: []
+
+# default mount values
+nfsVersion: "4"
+nfsOpts: "defaults,rsize=65536,wsize=65536"
+
+# To install on centos machine
+nfsCentOS: nfs-utils
