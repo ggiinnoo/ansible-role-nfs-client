@@ -1,3 +1,5 @@
+![Ansible role nfs client](https://github.com/ggiinnoo/ansible-role-nfs-client/workflows/Ansible%20role%20nfs%20client/badge.svg)
+
 NFS client
 =========
 
